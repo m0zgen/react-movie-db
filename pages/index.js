@@ -8,15 +8,14 @@ import Footer from "../components/footer";
 
 const MOVIE_DATA = [
     {
-
         id: '1',
-        const increment = () => {	    name: 'The Shawshank Redemption',
-            const newCount = count + 1	    releaseYear: 1994,
-                setCount(newCount)	    description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-                rating: 4.8,
-                genre: 'drama',
-                image: 'https://m.media-amazon.com/images/M/MV5BNjQ2NDA3MDcxMF5BMl5BanBnXkFtZTgwMjE5NTU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg'
-        },
+        name: 'The Shawshank Redemption',
+        releaseYear: 1994,
+        description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+        rating: 4.8,
+        genre: 'drama',
+        image: 'https://m.media-amazon.com/images/M/MV5BNjQ2NDA3MDcxMF5BMl5BanBnXkFtZTgwMjE5NTU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg'
+    },
     {
         id: '2',
         name: 'The Dark Knight',
@@ -39,17 +38,6 @@ const MOVIE_DATA = [
 
 
 const Home = () => {
-
-    const [ count, setCount] = useState(0)
-
-    const increment = () => {
-        setCount(count + 1)
-    }
-
-    const decrement = () => {
-        const newCount = count - 1
-        setCount(newCount)
-    }
 
     return(
         <div>
@@ -74,17 +62,11 @@ const Home = () => {
             <div className="top-container">
                 <div className="container">
 
-                    <button onClick={increment} className="btn btn-primary">Increment</button>
-                    <button onClick={decrement} className="btn btn-primary">Decrement</button>
-
                     <div className="row">
 
                         <div className="col-lg-3">
                             <SideMenu
-                                appName={"Movie DB"}
-                                onClickHandler={() => {
-                                    console.log("Hello world!") }}
-                                whateverIWant={count}/>
+                                appName={"Movie DB"}/>
 
                         </div>
 
@@ -92,7 +74,7 @@ const Home = () => {
                             <Carousel/>
 
                             <div className="row">
-                                <MovieList count={count}/>
+                                <MovieList movies={MOVIE_DATA}/>
 
                             </div>
                         </div>
