@@ -1,88 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Navbar from "../components/navbar";
+import SideMenu from "../components/sideMenu";
+import Carousel from "../components/carousel";
+import MovieList from "../components/movieList";
+import Footer from "../components/footer";
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const MOVIE_DATA = [
+    {
 
-    <Nav />
+        id: '1',
+        const increment = () => {	    name: 'The Shawshank Redemption',
+            const newCount = count + 1	    releaseYear: 1994,
+                setCount(newCount)	    description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+                rating: 4.8,
+                genre: 'drama',
+                image: 'https://m.media-amazon.com/images/M/MV5BNjQ2NDA3MDcxMF5BMl5BanBnXkFtZTgwMjE5NTU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg'
+        },
+    {
+        id: '2',
+        name: 'The Dark Knight',
+        releaseYear: 2008,
+        description: 'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
+        rating: 4.7,
+        genre: 'action, crime, drama',
+        image: 'https://img.cinemablend.com/filter:scale/quill/c/3/8/0/f/4/c380f4f12cfeec19f0c40c6f57db188f2f98cca8.jpg?mw=600'
+    },
+    {
+        id: '3',
+        name: 'Lord of the Rings',
+        releaseYear: 2004,
+        description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
+        rating: 4.9,
+        genre: 'adventure, drama, fantasy',
+        image: 'https://img.cinemablend.com/filter:scale/quill/0/f/5/2/a/6/0f52a6843a25c1a5c1f9a0c00548cad9e1d912e2.jpg?mw=600'
+    }
+]
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
 
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
-    </div>
+const Home = () => {
 
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
-  </div>
-)
+    const [ count, setCount] = useState(0)
+
+    const increment = () => {
+        setCount(count + 1)
+    }
+
+    const decrement = () => {
+        const newCount = count - 1
+        setCount(newCount)
+    }
+
+    return(
+        <div>
+            <Head>
+                <title>Home</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                      crossOrigin="anonymous"/>
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                        crossOrigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                        crossOrigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                        crossOrigin="anonymous"></script>
+            </Head>
+
+            <Navbar/>
+
+            <div className="top-container">
+                <div className="container">
+
+                    <button onClick={increment} className="btn btn-primary">Increment</button>
+                    <button onClick={decrement} className="btn btn-primary">Decrement</button>
+
+                    <div className="row">
+
+                        <div className="col-lg-3">
+                            <SideMenu
+                                appName={"Movie DB"}
+                                onClickHandler={() => {
+                                    console.log("Hello world!") }}
+                                whateverIWant={count}/>
+
+                        </div>
+
+                        <div className="col-lg-9">
+                            <Carousel/>
+
+                            <div className="row">
+                                <MovieList count={count}/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
+
+            <style jsx>
+                {`
+                    .top-container {
+                        padding-top: 80px;
+                    }
+                    
+                `}
+            </style>
+
+        </div>
+    )
+}
 
 export default Home
